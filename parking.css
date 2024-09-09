@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+section {
+    background-color: #336600;
+    padding: 8px;
+}
+.logo{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.logo img{
+    width: 30%;
+}
+main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+footer{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 2px;
+
+}

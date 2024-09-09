@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RST Hotel</title>
+    <link rel="stylesheet" href ="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+    <script src ="scripts.js"></script>
+</head>
+<body >
+
+    <section>
+        <div class="logo">
+            <img src="img/RST name.png">
+        </div>
+    </section>
+    <main class="menu">
+        <img class ="main_logo" src="img/RST Logo.png">
+        <h1>Welcome to RST Hotel!</h1>
+        <h2>room 200</h2>
+        <bu>
+            <button id="parking_bu" onclick="window.location.href='parking.html'">Parking System</button>
+            <button id="iot_bu" onclick="window.location.href='iot_room.html'">IOT</button>
+        </bu>
+    </main>
+    <footer>
+        <button >DEV</button>
+    </footer>
+    <script>
+        connectMQTT();
+        setTimeout(() => {
+            requiredData();
+        }, 1500);
+    </script>
+</body>
+
+</html>

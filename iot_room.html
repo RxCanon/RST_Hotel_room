@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RST Hotel-200 room</title>
+    <link rel="stylesheet" href="iot_room.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <main>
+    <h1>Room 200</h1>
+    <div class="pm">
+      <h>PM 2.5 :</h>
+      <text id="pm25_num">Loading...</text>
+    <div class="status">
+      </div>
+      <div class="temp">
+        <h>Temperature :</h>
+        <text id="temp_num" value="24">Loading...</text>
+      </div>
+      <div class="hum">
+        <h>Hum :</h>
+        <text id="hum_num" valuse="30">Loading...</text>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="light_panel">
+            <div class="light1">
+                <h>Light 1 :</h>
+                <input type="checkbox" id="light1_bu">
+            </div>
+            <div class="light2">
+                <h>Light 2 :</h>
+                <input type="checkbox" id="light2_bu">
+            </div>
+        </div>
+         <div class="lock_panel">
+            <div class="door">
+              <h>Door :</h>
+              <input type="checkbox" id="door">
+            </div>
+            <div class="window" >
+              <h>Widow :</h>
+              <input type="checkbox"id="window">
+            </div>
+          </div>
+        </div>
+      <div onclick="window.location.href='aircon.html'">
+          <img class="small"src="img/aircon.webp">
+          <div>Air Condition</div>
+      </div>
+    </main>
+    <footer>
+      <button onclick="window.location.href='index.html'">HOME</button>
+  </footer>
+  <script>
+    document.getElementById("temp_num").innerHTML = localStorage.getItem("temp");
+    document.getElementById("hum_num").innerHTML = localStorage.getItem("hum");
+    connectMQTT();
+
+    //ตรวจสอบ Light 1💡
+    const checkbox_light1 = document.getElementById('light1_bu');
+    checkbox_light1.addEventListener('change', () => {
+      if (checkbox_light1.checked) {
+        light_pub(1,1);
+        console.log('Light 1 : ON🟢');
+      } else {
+        light_pub(0,1);
+        console.log('Light 1 : OFF🔴');
+      }
+    });
+    //ตรวจสอบ Light 2💡
+    const checkbox_light2 = document.getElementById('light2_bu');
+    checkbox_light2.addEventListener('change', () => {
+      if (checkbox_light2.checked) {
+        light_pub(1,2);
+        console.log('Light 2 : ON🟢');
+      } else {
+        light_pub(0,2);
+        console.log('Light 2 : OFF🔴');
+      }
+    });
+    //ตรวจสอบ Door🚪
+    const checkbox_door = document.getElementById('door');
+    checkbox_door.addEventListener('change', () => {
+      if (checkbox_door.checked) {
+        iot_public(1,"door");
+        console.log('Door : ON🟢');
+      } else {
+        iot_public(0,"door");
+        console.log('Door : OFF🔴');
+      }
+    });
+    //ตรวจสอบ Window 🪟
+    const checkbox_window = document.getElementById('window');
+    checkbox_window.addEventListener('change', () => {
+      if (checkbox_window.checked) {
+        iot_public(1,"window");
+        console.log('window : ON🟢');
+      } else {
+        iot_public(0,"window");
+        console.log('widow : OFF🔴');
+      }
+    });
+  </script>
+</body>
+</html>

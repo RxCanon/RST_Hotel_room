@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="aircon.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+    <script src="scripts.js"></script>
+
+</head>
+<body>
+    <main class="panel">
+        <div class="box1">
+            <div class="counter">
+                <button class="plus">+</button>
+                <input type="text" value="24" id="air_temp" readonly>
+                <button class="minus">-</button>
+            </div>
+        </div>
+        <div class="box2">
+            <div class ="power">
+                <button class="onoff" id="toggleButton">ON</button>
+            </div>
+            <div class="mode_air">
+                <button id="up_mode"><</button>
+                <input type="text" value="AUTO" id="modeSelect" readonly>
+                <button id="down_mode">></button>
+            </div>
+            </div>      
+        </div>
+    </main>
+    <footer>
+        <button onclick="window.location.href='iot_room.html'">BACK</button>
+    </footer>
+    <script src="aircon.js">
+    </script>
+
+</body>
+</html>
